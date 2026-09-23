@@ -13,3 +13,10 @@ Que se traduce en:
 
 <img width="313" height="84" alt="image" src="https://github.com/user-attachments/assets/5ad87759-9b5e-4fa5-8da7-eff1ddde9ff4" />
 
+
+Con estos datos ya se puede relacionar la posicion en pixeles 2D a las coordenadas xy del robot.
+
+# Creación de las casillas del mapa
+Primero, el mapa se tiene que dividir en obstaculo (fisico o virtual) y espacio navegable, que se representan como negro y blanco respectivamente. En esta etapa me entretuve porque al leer que habia que añadir cierta erosión preventiva al mapa (para no chocar con las paredes o pasar muy cerca etc) decidi añadirlo de golpe a toda la imagen usando OpenCV usando un kernel que se aplicaba a todos los pixeles y "engordaba" las paredes. No resulto muy bien porque dificultaba mucho el cuadrar despues las rejillas, que dejaban pequeños huecos o zonas muy estrechas donde el robot no podria pasar. Tras descartar este metodo, pase con el que me quede finalmente que es: Recorrer toda la imagen (1012x1012) en regiones de 35x35 pixeles que es el tamaño exacto del robot proporcionado por el enunciado. En cada region se hace recuento de los pixeles blancos y los negros y si hay mas de cierto umbral de negros se rellena la casilla entera. Asumiendo que el robot no podria pasar comodamente por el centro de la casilla. 
+Una vez recorridas todas las regiones se representan las casillas visualmente con lineas negras, de nuevo con la libreria OpenCV, como se pintan encima de las regiones, las casillas acaban siendo un poco mas pequeñas que la aspiradora, que seria lo ideal.
+<img width="1012" height="1012" alt="image" src="https://github.com/user-attachments/assets/c7ddadc3-78b1-4315-a5fe-ae286d447fb4" />
