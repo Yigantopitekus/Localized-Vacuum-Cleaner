@@ -14,7 +14,7 @@ Que se traduce en:
 <img width="313" height="84" alt="image" src="https://github.com/user-attachments/assets/5ad87759-9b5e-4fa5-8da7-eff1ddde9ff4" />
 
 
-Con estos datos ya se puede relacionar la posicion en pixeles 2D a las coordenadas xy del robot.
+Con estos datos ya se puede relacionar la posición en pixeles 2D a las coordenadas xy del robot resolviendo el sistema de ecuaciones.
 
 # Creación de las casillas del mapa
 Primero, el mapa se tiene que dividir en obstaculo (fisico o virtual) y espacio navegable, que se representan como negro y blanco respectivamente. 
@@ -31,4 +31,9 @@ Una vez hecho esto, hay que decidir como se van a representar las casillas depen
 - Azul Oscuro: Casilla de inicio
 
 # Planificacion
-Como bien hemos dado en clase para la planificacion se va a usar el Backtracking Spiral Algorithm (BSA), este algoritmo es un algoritmo de cobertura completa, usa barridos sistematicos en forma de espiral siguiendo una prioridad establecida, en mi caso ESWN. El funcionamiento basico de este algoritmo (usando mi orden de prioridad como ejemplo) es el siguiente:
+Como bien hemos dado en clase para la planificacion se va a usar el Backtracking Spiral Algorithm (BSA), este algoritmo es un algoritmo de cobertura completa, usa barridos sistematicos en forma de espiral siguiendo una prioridad establecida, en mi caso ESWN (Este,Sur,Oeste,Norte). El funcionamiento basico de este algoritmo (usando mi orden de prioridad como ejemplo) es el siguiente:
+
+El robot empieza el movimiento hacia E, mientras no se tope con nada (obstaculo o casilla visitada) sigue en esta dirección. Si se topa con algo cambia la direccion hacia S y hace lo mismo, la diferencia es, segun q direccion lleve, va a comprobar primero una direccion u otra. Es decir, cuando se "choca" en E, primero comprueba S,luego W y por ultimo N, pero si se "choca" en S, primero comprueba W,luego N y por ultimo E. Este procedimiento lo ejecuta hasta que no queden casillas libres esto se denomina punto critico. 
+Esta situacion tiene una facil solucion, durante el recorrido de la espiral va anotando que casillas vecinas fuera de la trayectoria estan libres, para por si se queda atascado volver a una de ellas, estos son los puntos de retorno
+
+## Busqueda de puntos de retorno
