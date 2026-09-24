@@ -31,4 +31,4 @@ Una vez hecho esto, hay que decidir como se van a representar las casillas depen
 - Azul Oscuro: Casilla de inicio
 
 # Planificacion
-Como bien hemos dado en clase para la planificacion se va a usar el Backtracking Spiral Algorithm, 
+Como bien hemos dado en clase para la planificacion se va a usar el Backtracking Spiral Algorithm (BSA), este algoritmo es un algoritmo de cobertura completa, usa barridos sistematicos en forma de espiral siguiendo una prioridad establecida, en mi caso ESWN. El funcionamiento basico de este algoritmo (usando mi orden de prioridad como ejemplo) es el siguiente:
