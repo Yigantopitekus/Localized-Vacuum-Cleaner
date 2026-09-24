@@ -55,3 +55,6 @@ En la verion del barrido, hay una funcionalidad que no he implementado en el pla
 
 ## Busqueda de puntos de retorno
 Para la busqueda de puntos de retorno uso 2 metodos principales, el primero es comprobar que se pueda ir directamente en linea recta, se traza una linea hasta los 3 puntos  de retorno mas cercano ( medido por la distancia euclidia )  y se comprueba si se puede llegar de manera directa alguno de ellos. Si no duese posible, se aplica el algoritmo de busqueda Breadth-First-Search, para encontrar una ruta hasta el punto de retorno mas cercano. Este algoritmo es basicamente ir comprobando recursivamente desde la casilla de inicio (punto critico donde se encuentra el robot) las casillas vecinas hasta encontrar un punto de retorno registrado, y guardar las casillas y el orden en el que se han comprobado apra establecer la ruta. 
+
+<img width="612" height="510" alt="bfs_return_point" src="https://github.com/user-attachments/assets/d2c121bc-9c34-4bb6-8e6d-1dff13f08aac" />
+
